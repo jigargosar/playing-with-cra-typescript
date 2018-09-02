@@ -1,8 +1,11 @@
+// @flow
+
 import * as faker from 'faker'
 import * as React from 'react'
 import {Component} from 'react'
 import './App.css'
 import logo from './logo.svg'
+
 
 function Task({
   id,
