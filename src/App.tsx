@@ -56,15 +56,23 @@ export function createRandomTask() {
 
 function App() {
   const handleEnter = (event: React.KeyboardEvent) => {
-    const target = event.target as HTMLInputElement
-    if (target instanceof HTMLInputElement && event.key === 'Enter') {
+    const target = event.target
+    if (!(target instanceof HTMLInputElement)) {
+      return
+    }
+    log(target.value)
+    if (event.key === 'Enter') {
       log(target.value)
     }
   }
   return (
     <Fragment>
       <Container>
-        {() => <input type="text" autoFocus={true} onKeyDown={handleEnter} />}
+        {() => (
+          <div tabIndex={0} onKeyDown={handleEnter}>
+            FOO
+          </div>
+        )}
       </Container>
     </Fragment>
   )
