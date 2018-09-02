@@ -1,6 +1,5 @@
 // @flow
 
-import {Container} from 'constate'
 import * as debug from 'debug'
 import * as faker from 'faker'
 import * as React from 'react'
@@ -67,9 +66,7 @@ function App() {
   }
   return (
     <Fragment>
-      <Container>
-        {() => <input type="text" onKeyPress={handleEnter} />}
-      </Container>
+      <input type="text" onKeyPress={handleEnter} />
     </Fragment>
   )
 }
