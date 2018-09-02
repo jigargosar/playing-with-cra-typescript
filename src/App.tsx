@@ -58,7 +58,7 @@ function App() {
   const handleEnter = (event: React.KeyboardEvent) => {
     const target = event.target
     if (!(target instanceof HTMLInputElement)) {
-      return
+      throw new Error('event.target is not input element')
     }
     log(target.value)
     if (event.key === 'Enter') {
@@ -68,11 +68,7 @@ function App() {
   return (
     <Fragment>
       <Container>
-        {() => (
-          <div tabIndex={0} onKeyDown={handleEnter}>
-            FOO
-          </div>
-        )}
+        {() => <input type="text" onKeyPress={handleEnter} />}
       </Container>
     </Fragment>
   )
