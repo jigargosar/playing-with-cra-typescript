@@ -4,8 +4,19 @@ import {Component} from 'react'
 import './App.css'
 import logo from './logo.svg'
 
-
-function Task({ id, title, done, createdAt, category}:{id:string,title:string,done:boolean,createdAt:number,category:Category}) {
+function Task({
+  id,
+  title,
+  done,
+  createdAt,
+  category,
+}: {
+  id: string
+  title: string
+  done: boolean
+  createdAt: number
+  category: Category
+}) {
   return { id, title, done, createdAt, category }
 }
 
@@ -15,9 +26,15 @@ enum Category {
   Project,
   SomeDay,
 }
+
 export function createRandomTask() {
   const defaults = {
-    category: faker.random.arrayElement([Category.InBasket]),
+    category: faker.random.arrayElement([
+      Category.InBasket,
+      Category.NextAction,
+      Category.Project,
+      Category.SomeDay,
+    ]),
     createdAt: Date.now(),
     done: faker.random.boolean(),
     id: faker.random.alphaNumeric(3),
