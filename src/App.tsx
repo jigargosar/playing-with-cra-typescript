@@ -1,7 +1,13 @@
+import * as faker from 'faker'
 import * as React from 'react'
 import {Component} from 'react'
 import './App.css'
 import logo from './logo.svg'
+
+const task = {
+  id: faker.random.alphaNumeric(3),
+
+}
 
 class App extends Component {
   public render() {
@@ -11,9 +17,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
+        <div>task.id={task.id}</div>
       </div>
     )
   }
