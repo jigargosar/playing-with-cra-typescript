@@ -1,9 +1,13 @@
 // @flow
 
+import {Container} from 'constate'
+import * as debug from 'debug'
 import * as faker from 'faker'
 import * as React from 'react'
+import {Fragment} from 'react'
 import './App.css'
-import logo from './logo.svg'
+
+const log = debug('App')
 
 function Task({
   id,
@@ -46,19 +50,23 @@ export function createRandomTask() {
   return Task(defaults)
 }
 
-const task = {
-  id: faker.random.alphaNumeric(3),
-}
+// const task = {
+//   id: faker.random.alphaNumeric(3),
+// }
 
 function App() {
+  const handleEnter = (event: React.KeyboardEvent) => {
+    const target = event.target as HTMLInputElement
+    if (target instanceof HTMLInputElement && event.key === 'Enter') {
+      log(target.value)
+    }
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1 className="App-title">Welcome to React</h1>
-      </header>
-      <div>task.id={task.id + 1}</div>
-    </div>
+    <Fragment>
+      <Container>
+        {() => <input type="text" autoFocus={true} onKeyDown={handleEnter} />}
+      </Container>
+    </Fragment>
   )
 }
 
