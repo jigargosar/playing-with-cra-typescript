@@ -27,14 +27,16 @@ enum Category {
   SomeDay,
 }
 
+const AllCategories = [
+  Category.InBasket,
+  Category.NextAction,
+  Category.Project,
+  Category.SomeDay,
+]
+
 export function createRandomTask() {
   const defaults = {
-    category: faker.random.arrayElement([
-      Category.InBasket,
-      Category.NextAction,
-      Category.Project,
-      Category.SomeDay,
-    ]),
+    category: faker.random.arrayElement(AllCategories),
     createdAt: Date.now(),
     done: faker.random.boolean(),
     id: faker.random.alphaNumeric(3),
